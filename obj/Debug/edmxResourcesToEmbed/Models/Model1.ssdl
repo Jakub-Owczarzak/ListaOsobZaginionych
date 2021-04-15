@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="listazaginonychModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+    <Property Name="datazag" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="osoba">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="50" />
+    <Property Name="lastname" Type="varchar" MaxLength="50" />
+    <Property Name="alias" Type="varchar" MaxLength="50" />
+    <Property Name="city_id" Type="int" />
+    <Property Name="status_id" Type="int" />
+    <Property Name="tel" Type="int" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="rok" Type="int" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="50" />
+    <Property Name="lastname" Type="varchar" MaxLength="50" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_osoba_city">
+    <End Role="city" Type="Self.city" Multiplicity="0..1" />
+    <End Role="osoba" Type="Self.osoba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="osoba">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_osoba_status">
+    <End Role="status" Type="Self.status" Multiplicity="0..1" />
+    <End Role="osoba" Type="Self.osoba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="osoba">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="listazaginonychModelStoreContainer">
+    <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="osoba" EntityType="Self.osoba" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_osoba_city" Association="Self.FK_osoba_city">
+      <End Role="city" EntitySet="city" />
+      <End Role="osoba" EntitySet="osoba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_osoba_status" Association="Self.FK_osoba_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="osoba" EntitySet="osoba" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

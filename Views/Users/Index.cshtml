@@ -1,0 +1,54 @@
+﻿@model IEnumerable<OsobyZaginioneFinal.Models.user>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista uprawnionych użytkowników</h2>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Lista osób", "Index", "Osoba")</li>
+        <li>@Html.ActionLink("Miasta", "Index", "City")</li>
+        <li>@Html.ActionLink("Status Zaginionego", "Index", "Status")</li>
+        <li>@Html.ActionLink("Użytkownik", "Index", "Users")</li>
+
+    </ul>
+</div>
+
+<p>
+    @Html.ActionLink("Dodaj nowego użytkownika", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="listazaginonychModelStoreContainer" CdmEntityContainer="listazaginonychEntities">
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="listazaginonychModel.city">
+        <MappingFragment StoreEntitySet="city">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="city1" ColumnName="city" />
+          <ScalarProperty Name="datazag" ColumnName="datazag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="osobas">
+      <EntityTypeMapping TypeName="listazaginonychModel.osoba">
+        <MappingFragment StoreEntitySet="osoba">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="listazaginonychModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="status1" ColumnName="status" />
+          <ScalarProperty Name="rok" ColumnName="rok" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="listazaginonychModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<OsobyZaginioneFinal.Models.city>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dodawanie Miast</h2>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Lista osób", "Index", "Osoba")</li>
+        <li>@Html.ActionLink("Miasta", "Index", "City")</li>
+        <li>@Html.ActionLink("Status Zaginionego", "Index", "Status")</li>
+        <li>@Html.ActionLink("Użytkownik", "Index", "Users")</li>
+
+    </ul>
+</div>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.city1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datazag)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.city1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datazag)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
